@@ -35,5 +35,17 @@ Read only인 props를 통해 부모컴포넌트인 App.js에서 받은 props를 
 상태를 유지하는 State를 이용하여 버튼에 따른 숫자증가구현, setState를 통해 render가 작동한다.
 
 ※Ex2 - 컴포넌트 실습2
+-> index.js : 클래스형 컴포넌트 
+state로 arr를 가지고 이걸 이용하여 상품담기구현, props로 fn을 던져서 구현한다.
+
+※Ex3 - SimpleTODO
+-> index.js & TodoInput.js : 클래스형 컴포넌트
+-> TodoList.js : 함수형 컴포넌트
+
+input의 onChange로 값을 받아서 index.js에서 add라는 함수를 props로 받아서 호출하여
+상위컴포넌트를 render시킨다. 
+
+같은 방식으로 TodoList의 변경 및 삭제도 구현 
+_________________________________________________________________________________________
 
 

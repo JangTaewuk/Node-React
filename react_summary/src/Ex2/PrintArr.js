@@ -6,5 +6,13 @@ const PrintArr = ({arr,fn}) => {
                 <li key={pcode}>{pname} {price}
                 <input type='checkbox' defaultChecked={selected} onChange={()=>fn({pcode})}>
                 </input></li>
-        )
+    )
+
+    return(
+        <ul>
+            {result}
+        </ul>
+    )
 }
+
+export default PrintArr
