@@ -1,4 +1,6 @@
 var express = require('express');
+var Todo = require('../models').Todo;
+
 var router = express.Router();
 
 /* GET home page. */

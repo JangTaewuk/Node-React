@@ -29,10 +29,14 @@ export default class TodoList extends Component{
 
         this.setState({loaded:false})
 
-        axios.get("http://192.168.41.80:8080/todo/pages/"+page)
+        axios.get("http://localhost:5000/todo")
         .then(res => {
             console.log(res.data)
-            this.setState( Object.assign( {},res.data,{loaded:true})  )
+            console.log("this state",this.state)
+            this.setState( Object.assign( {},{content:res.data},{loaded:true})
+            
+            )
+            console.log("done",this.state)
         })
 
     }
@@ -43,8 +47,9 @@ export default class TodoList extends Component{
 
         const page = this.props.match.params.page
         const { content, totalPages, loaded} = this.state
-        const list = content.map( ({tno,title}) => {
-            return ( <li key={tno}> {title} </li>)
+        const list = content.map( ({id,title}) => {
+            
+            return ( <li key={id}> {title} </li>)
         })
 
         const linkArr = []
@@ -59,7 +64,7 @@ export default class TodoList extends Component{
             <h1>Todo List {page} {loaded ? "END": "NOT YET"}</h1>
                 {loaded == true? 
                     <ul>
-                        <li> todoList ....</li>
+                        {list}
                     </ul>
                     :
                     <h2> 로딩중.... 잠시만 기달려주세요 ... </h2>
