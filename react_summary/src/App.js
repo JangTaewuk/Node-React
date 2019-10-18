@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
 import Main from './Ex4/pages/Main'
-import TodoList from './Ex4/pages/Todo/TodoList'
+import Todo from './Ex4/pages/Todo/Todo'
 import MyPage from './Ex4/pages/MyPage'
 
 
@@ -25,14 +25,14 @@ export default class App extends Component {
               <Link to="/myPage/">MyPage</Link>
             </li>
             <li>
-              <Link to="/todoList/1">TodoList</Link>
+              <Link to="/Todo/">Todo</Link>
             </li>
           </ul>
         </nav>
         
         <Route path="/" exact component={Main}></Route>
         <Route path="/myPage" exact component={MyPage}></Route>
-        <Route path="/todoList/:page" component={TodoList} />
+        <Route path="/Todo/" component={Todo} />
         </div>
       </Router>
     );

@@ -16,16 +16,16 @@ export default class TodoList extends Component{
     }
 
     componentDidMount(){
-        const page = this.props.match.params.page
-        console.log("page: " + page)
-        this.getData(page)
+        //const page = this.props.match.params.page
+        //console.log("page: " + page)
+        this.getData()
     }
 
     componentWillUnmount() {
         console.log("componentWillUnmount")
     }
 
-    getData = (page) => {
+    getData = () => {
 
         this.setState({loaded:false})
 
@@ -41,15 +41,20 @@ export default class TodoList extends Component{
 
     }
 
+    deleteData = (tno) =>{
+        axios.delete("http://localhost:5000/todo/"+tno)
+        .then(res => {console.log(res.data)})
+    }
+
     render(){
         console.log("render....")
 
 
-        const page = this.props.match.params.page
+        //const page = this.props.match.params.page
         const { content, totalPages, loaded} = this.state
         const list = content.map( ({id,title}) => {
             
-            return ( <li key={id}> {title} </li>)
+            return ( <li key={id}> {title}  <button onClick={()=>this.deleteData(id)}>삭제</button></li>)
         })
 
         const linkArr = []
@@ -61,7 +66,7 @@ export default class TodoList extends Component{
 
         return(
             <div>
-            <h1>Todo List {page} {loaded ? "END": "NOT YET"}</h1>
+            <h1>Todo List  {loaded ? "END": "NOT YET"}</h1>
                 {loaded == true? 
                     <ul>
                         {list}
