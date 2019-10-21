@@ -1,3 +1,42 @@
+____________________________________________________________________________________________________________________
+
+	<insert id="insert" parameterType="com.example.demo.domain.TodoVO">
+		insert into tbl_todo (title,content,startDate,endDate,dayTime,rotationMonth,allDay) values(#{title},#{content},#{startDate},#{endDate},#{dayTime},#{rotationMonth},#{allDay})
+	</insert>
+
+	<select id="getMonthList" parameterType="String" resultType="com.example.demo.domain.TodoVO">
+	<![CDATA[
+		select *,datediff(endDate,startDate) as turm from tbl_todo where startDate <= LAST_DAY(date(#{date})) and EndDate >= date(#{date}) order by turm desc
+	]]>
+	</select>
+	
+	<select id="getDayList" parameterType="String" resultType="com.example.demo.domain.TodoVO">
+	<![CDATA[
+		select *,datediff(endDate,startDate) as turm from tbl_todo where startDate <= date(#{date}) and EndDate >= date(#{date}) order by turm desc
+	]]>
+	</select>
+	
+	<select id="getRotationList"  resultType="com.example.demo.domain.TodoVO">
+		select *,datediff(endDate,startDate) as turm from tbl_todo where rotationMonth = 1;
+	</select>
+
+  ____________________________________________________________________________________________________________________
+
+  private String title;
+	private String content;
+	private String startDate,endDate;
+	private String dayTime;
+	private int turm;
+	private boolean rotationMonth;
+	private boolean allDay;
+
+  ____________________________________________________________________________________________________________________
+
+
+
+
+
+
 # programmers 과제 테스트 템플릿 - Node.js
 
 programmers의 과제 테스트는 코드를 제출하면 자동으로 서버를 구성하여 실행해 볼 수 있는 환경을 제공합니다.
@@ -148,3 +187,8 @@ programmers에서 실행된 과제는 다음 환경에서 동작합니다.
 > npm 버전: 6.4.1
 >
 > yarn 버전: 1.12.3
+
+
+
+
+
