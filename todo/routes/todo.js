@@ -22,17 +22,6 @@ router.get('/list/:page', function(req, res, next) {
 router.post('/new',function(req,res,next){
   console.log("Register todo ...")
   console.log("req.body.." , req.body)
-  todo.create({
-    title: req.body.title
-  })
-    .then((result) => {
-      console.log(result);
-      res.status(201).json(result);
-    })
-    .catch((err) => {
-      console.error(err);
-      next(err);
-    });
   
 })
 
